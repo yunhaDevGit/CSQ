@@ -9,8 +9,9 @@ spring:
     console:
       enabled: true
       path: /h2-console
-
-# JPA
+  profiles:
+    include: oauth
+  # JPA
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
@@ -22,12 +23,11 @@ spring:
         use_sql_comments: true
 
 # Security OAuth
-security:
-  oauth2.client:
-    registration:
-      google:
-        clientId: 195979093576-p7vo8o5jb6ok20b3ulmauah441b8f1vf.apps.googleusercontent.com
-        clientSecret: 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
-        scope:
-          - email
-          - profile
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 195979093576-p7vo8o5jb6ok20b3ulmauah441b8f1vf.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile, email
